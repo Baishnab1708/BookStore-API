@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore API</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bookstore API</h1>
+            <div id="auth-status">
+                <button id="login-btn" class="active">Login</button>
+                <button id="signup-btn">Signup</button>
+                <button id="logout-btn" style="display: none;">Logout</button>
+            </div>
+        </header>
+
+        <div id="auth-forms" class="section">
+            <div id="login-form">
+                <h2>Login</h2>
+                <form id="form-login">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+            </div>
+            <div id="signup-form" style="display: none;">
+                <h2>Signup</h2>
+                <form id="form-signup">
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" required minlength="6">
+                        <small>Password must be at least 6 characters</small>
+                    </div>
+                    <button type="submit" class="btn">Signup</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="books-section" class="section" style="display: none;">
+            <h2>Books</h2>
+            <div class="controls">
+                <div class="search-filter">
+                    <div class="form-group">
+                        <input type="text" id="search-title" placeholder="Search by title...">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="filter-author" placeholder="Filter by author...">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="filter-category" placeholder="Filter by category...">
+                    </div>
+                    <div class="form-group">
+                        <select id="filter-rating">
+                            <option value="">Rating (All)</option>
+                            <option value="1">1+ stars</option>
+                            <option value="2">2+ stars</option>
+                            <option value="3">3+ stars</option>
+                            <option value="4">4+ stars</option>
+                            <option value="5">5 stars</option>
+                        </select>
+                    </div>
+                    <button id="search-btn" class="btn">Search</button>
+                </div>
+                <button id="add-book-btn" class="btn">Add New Book</button>
+            </div>
+
+            <div id="books-container"></div>
+            
+            <div class="pagination">
+                <button id="prev-page" class="btn" disabled>Previous</button>
+                <span id="page-info">Page 1</span>
+                <button id="next-page" class="btn">Next</button>
+            </div>
+        </div>
+
+        <!-- Add/Edit Book Modal -->
+        <div id="book-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modal-title">Add New Book</h2>
+                <form id="book-form">
+                    <input type="hidden" id="book-id">
+                    <div class="form-group">
+                        <label for="book-title">Title</label>
+                        <input type="text" id="book-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-author">Author</label>
+                        <input type="text" id="book-author" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-category">Category</label>
+                        <input type="text" id="book-category" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-price">Price</label>
+                        <input type="number" id="book-price" step="0.01" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-rating">Rating</label>
+                        <input type="number" id="book-rating" step="0.1" min="0" max="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-published">Published Date</label>
+                        <input type="date" id="book-published" required>
+                    </div>
+                    <button type="submit" class="btn">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="notification" class="notification"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
